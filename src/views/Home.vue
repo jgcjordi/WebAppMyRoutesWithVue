@@ -2,11 +2,11 @@
   <div id="home">
     <md-card>
       <md-card-content>
-        <md-field md-inline>
-          <label>Título ...</label>
-          <md-input v-model="inline"></md-input>
+        <md-field>
+          <label>Título...</label>
+          <md-textarea v-model="autogrow" md-autogrow></md-textarea>
         </md-field>
-        <md-button class="md-raised md-primary">Empezar Ruta</md-button>
+        <md-button class="md-raised md-accent">Empezar Ruta</md-button>
       </md-card-content>
     </md-card>
   </div>

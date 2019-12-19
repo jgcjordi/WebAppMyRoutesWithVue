@@ -61,4 +61,7 @@ export default {
 .md-app {
   height: 100%;
 }
+.md-app-content {
+  background-color: rgb(247, 251, 255) !important;
+}
 </style>
