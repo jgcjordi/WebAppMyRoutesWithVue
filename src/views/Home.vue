@@ -1,18 +1,25 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="home">
+    <md-card>
+      <md-card-content>
+        <md-field md-inline>
+          <label>Título ...</label>
+          <md-input v-model="inline"></md-input>
+        </md-field>
+        <md-button class="md-raised md-primary">Empezar Ruta</md-button>
+      </md-card-content>
+    </md-card>
   </div>
 </template>
-
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
 export default {
-  name: 'home',
-  components: {
-    HelloWorld
+  name: "Home",
+  data: function() {
+    return {};
   }
-}
+};
 </script>
+<style>
+#home {
+}
+</style>
