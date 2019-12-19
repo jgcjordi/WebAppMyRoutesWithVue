@@ -4,11 +4,12 @@
       <md-card-content>
         <md-field>
           <label>Título...</label>
-          <md-textarea v-model="autogrow" md-autogrow></md-textarea>
+          <md-textarea md-autogrow></md-textarea>
         </md-field>
         <md-button class="md-raised md-accent">Empezar Ruta</md-button>
       </md-card-content>
     </md-card>
+    
   </div>
 </template>
 <script>

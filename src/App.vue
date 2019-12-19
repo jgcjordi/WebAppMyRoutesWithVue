@@ -60,8 +60,15 @@ export default {
 }
 .md-app {
   height: 100%;
+  -moz-box-shadow: inset 0 -3px 6px -6px #000000;
+  -webkit-box-shadow: inset 0 -3px 6px -6px #000000;
+  box-shadow: inset 0 -3px 6px -6px #000000;
+  padding-bottom: 0.1rem;
 }
 .md-app-content {
-  background-color: rgb(247, 251, 255) !important;
+    background-color: rgb(247, 251, 255) !important;
+}
+.md-app-scroller {
+    background-color: rgb(247, 251, 255) !important;
 }
 </style>
