@@ -24,10 +24,6 @@ export default new Router({
             component: Maps
         },
         {
-            path: '/routeDetails/:id',
-            component: RouteDetails
-        },
-        {
             path: '*',
             redirect: '/'
         }
