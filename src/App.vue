@@ -93,6 +93,7 @@ export default {
   }
   .md-app-content {
     background-color: rgb(247, 251, 255) !important;
+    padding: 0px !important;
   }
   .md-app-scroller {
     background-color: rgb(247, 251, 255) !important;

@@ -70,5 +70,6 @@ export default {
 </script>
 <style>
 #routes {
+  padding: 1rem;
 }
 </style>

@@ -23,7 +23,7 @@ export default {
       globals: globals,
       routes: routes,
       addRoute: addRoute,
-      saveRoutesArray: saveRoutesArray,
+      saveRoutesArray: saveRoutesArray
     };
   },
   created: function() {
@@ -61,10 +61,16 @@ export default {
         };
         this.globals.geoWatcher = navigator.geolocation.watchPosition(
           (pos) => {
-            this.routes[0].positions.push(pos)
-            this.saveRoutesArray()
+            let point = {
+              timestamp: pos.timestamp,
+              lat: pos.coords.latitude,
+              lng: pos.coords.longitude
+            };
+            console.log(point)
+            this.routes[0].positions.push(point);
+            this.saveRoutesArray();
             console.log(pos);
-            console.log(this.routes)
+            console.log(this.routes);
           },
           function(err) {
             console.log(err);
@@ -109,6 +115,7 @@ export default {
 </script>
 <style>
 #home {
+  padding: 1rem;
 }
 .counter-timer {
   display: flex;
