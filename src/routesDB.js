@@ -33,7 +33,7 @@ function chargeExampleBD() {
             id: 0,
             title: 'Camino de la via Verde de Alcoy',
             ts: new Date(),
-            color: '#03A9F4',
+            color: '#FFC107',
             visible: true,
             positions: [
                 { lat: 38.690682, lng: -0.489175 },
