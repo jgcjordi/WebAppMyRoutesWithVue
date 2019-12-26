@@ -15,6 +15,14 @@
 
       <md-app-content>
         <router-view></router-view>
+        <md-snackbar
+          md-position="left"
+          :md-duration="3000"
+          :md-active.sync="snackBarRecording"
+          md-persistent
+        >
+          <span>Recording... {{globals.timerTxt}}!</span>
+        </md-snackbar>
       </md-app-content>
     </md-app>
 
@@ -48,24 +56,23 @@
 
 <script>
 import { globals } from "./globals";
-import { chargeExampleBD, chargeBDFormLocalStorage } from "./routesDB";
+import { chargeBDFormLocalStorage } from "./routesDB";
 export default {
   name: "App",
   data: function() {
     return {
       showDrawer: false,
       globals: globals,
-      chargeExampleBD: chargeExampleBD,
+      snackBarRecording: false,
       chargeBDFormLocalStorage: chargeBDFormLocalStorage
     };
   },
   created: function() {
-    this.chargeBDFormLocalStorage()
-    this.chargeExampleBD()
+    this.chargeBDFormLocalStorage();
   },
   methods: {
     timerActive: function() {
-      console.log("Timer Active");
+      this.snackBarRecording = true
     }
   }
 };

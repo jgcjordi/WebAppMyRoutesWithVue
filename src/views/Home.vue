@@ -13,15 +13,17 @@
   </div>
 </template>
 <script>
-import { globals} from "../globals";
-import { routes } from "../routesDB";
+import { globals } from "../globals";
+import { routes, addRoute, saveRoutesArray } from "../routesDB";
 export default {
   name: "Home",
   data: function() {
     return {
       btnText: "",
       globals: globals,
-      routes: routes
+      routes: routes,
+      addRoute: addRoute,
+      saveRoutesArray: saveRoutesArray,
     };
   },
   created: function() {
@@ -36,21 +38,33 @@ export default {
     btnRecordRoute: function() {
       if (this.globals.recordingRoute) {
         this.btnText = "Start Route";
-        navigator.geolocation.clearWatch(this.globals.geoWatcher)
-        this.globals.geoWatcher = null
+        navigator.geolocation.clearWatch(this.globals.geoWatcher);
+        this.globals.geoWatcher = null;
       } else {
         this.btnText = "Stop Route";
         this.globals.timeInitRecord = new Date();
 
+        let routeToAdd = {
+          id: 0,
+          title: this.globals.titleRoute,
+          ts: new Date(),
+          color: "#03A9F4",
+          visible: false,
+          positions: []
+        };
+        this.addRoute(routeToAdd);
 
         let options = {
           enableHighAccuracy: true,
           timeout: 5000,
-          maximumAge: 0    //si es 0, no puede utilizar ubicaciones previamente cacheadas, solo utiliza la posicion real actual.
+          maximumAge: 0 //si es 0, no puede utilizar ubicaciones previamente cacheadas, solo utiliza la posicion real actual.
         };
         this.globals.geoWatcher = navigator.geolocation.watchPosition(
-          function(pos) {
+          (pos) => {
+            this.routes[0].positions.push(pos)
+            this.saveRoutesArray()
             console.log(pos);
+            console.log(this.routes)
           },
           function(err) {
             console.log(err);

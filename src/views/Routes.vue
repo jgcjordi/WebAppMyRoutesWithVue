@@ -8,11 +8,21 @@
       @changeColor="changeColor"
       @changeVisibility="changeVisibility"
     ></cardRoute>
+    <md-snackbar
+      md-position="left"
+      :md-duration="3000"
+      :md-active.sync="showNoDeleteRouteSnackbar"
+      md-persistent
+    >
+      <span>You cannot delete the route while recording!</span>
+    </md-snackbar>
   </div>
 </template>
 <script>
 import CardRoute from "../components/CardRoute";
 import { routes, saveRoutesArray } from "../routesDB";
+import { globals } from "../globals";
+
 export default {
   name: "Routes",
   components: {
@@ -21,7 +31,9 @@ export default {
   data: function() {
     return {
       routes: routes,
-      saveRoutesArray: saveRoutesArray
+      saveRoutesArray: saveRoutesArray,
+      globals: globals,
+      showNoDeleteRouteSnackbar: false
     };
   },
   methods: {
@@ -32,22 +44,26 @@ export default {
     },
     removeRoute: function(data) {
       let index = this.findIndexRoute(data);
-      this.routes.splice(index, 1);
-      this.saveRoutesArray()
+      if (index === 0 && this.globals.recordingRoute) {
+        this.showNoDeleteRouteSnackbar = true
+      } else {
+        this.routes.splice(index, 1);
+        this.saveRoutesArray();
+      }
     },
     changeColor: function(data, value) {
       let index = this.findIndexRoute(data);
       let newRoute = this.routes[index];
       newRoute.color = value;
       this.$set(this.routes, index, newRoute);
-      this.saveRoutesArray()
+      this.saveRoutesArray();
     },
     changeVisibility: function(data) {
       let index = this.findIndexRoute(data);
       let newRoute = this.routes[index];
       newRoute.visible = !newRoute.visible;
       this.$set(this.routes, index, newRoute);
-      this.saveRoutesArray()
+      this.saveRoutesArray();
     }
   }
 };

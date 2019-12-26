@@ -1,15 +1,29 @@
 var routes = []
 
 function chargeBDFormLocalStorage() {
-    let aux = sessionStorage.getItem('routes') ?
-        JSON.parse(sessionStorage.getItem('routes')) : [];
-    for (let i in aux) {
-        aux[i].ts = new Date(aux[i].ts);
+    if (sessionStorage.getItem('routes')) {
+        let aux = JSON.parse(sessionStorage.getItem('routes'))
+        for (let i in aux) {
+            //date
+            aux[i].ts = new Date(aux[i].ts)
+            routes = aux
+
+            //positions
+        }
+    } else {
+        chargeExampleBD()
     }
-    routes = aux;
 }
 
 function saveRoutesArray() {
+    // let auxRoutes = routes
+    // for (let r in auxRoutes) {
+    //     console.log(r.positions)
+    //         //positions
+    //     for (let g in r.positions) {
+    //         console.log(g)
+    //     }
+    // }
     sessionStorage.setItem('routes', JSON.stringify(routes));
 }
 
@@ -20,7 +34,7 @@ function addRoute(route) {
         route.id = 1
     }
     routes.unshift(route)
-    sessionStorage.setItem('routes', JSON.stringify(routes));
+    saveRoutesArray()
 }
 
 function chargeExampleBD() {
@@ -62,7 +76,7 @@ function chargeExampleBD() {
 
 export {
     routes,
-    chargeExampleBD,
     chargeBDFormLocalStorage,
-    saveRoutesArray
+    saveRoutesArray,
+    addRoute
 }
