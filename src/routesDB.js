@@ -1,8 +1,8 @@
 var routes = []
 
 function chargeBDFormLocalStorage() {
-    if (sessionStorage.getItem('routes')) {
-        let aux = JSON.parse(sessionStorage.getItem('routes'))
+    if (localStorage.getItem('routes')) {
+        let aux = JSON.parse(localStorage.getItem('routes'))
         for (let i in aux) {
             aux[i].ts = new Date(aux[i].ts)
             routes = aux
@@ -13,7 +13,7 @@ function chargeBDFormLocalStorage() {
 }
 
 function saveRoutesArray() {
-    sessionStorage.setItem('routes', JSON.stringify(routes));
+    localStorage.setItem('routes', JSON.stringify(routes));
 }
 
 function addRoute(route) {
