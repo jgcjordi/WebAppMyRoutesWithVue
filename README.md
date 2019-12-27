@@ -4,13 +4,13 @@ Para instalar la web app progresiva en el dispositivo movil entrar en el siguien
 
 [https://jgcjordi.github.io/WebAppMyRoutesWithVue/](https://jgcjordi.github.io/WebAppMyRoutesWithVue/)
 
-![image](https://raw.githubusercontent.com/jgcjordi/ProyectoPeliculasReact/master/readme/portada.png)
+![image](https://github.com/jgcjordi/WebAppMyRoutesWithVue/blob/master/readme_assets/web-app-schema.jpg?raw=true)
 
 ## Tecnologías Utilizadas
 
 Para el desarrollo de la web app progresiva se ha utilizado Vue, Vue-Material, CSS3 y SCSS, JS, y Google Maps Api.
 
-![image](https://raw.githubusercontent.com/jgcjordi/ProyectoPeliculasReact/master/readme/imagenTecnologias.png)
+![image](https://raw.githubusercontent.com/jgcjordi/WebAppMyRoutesWithVue/master/readme_assets/tecnologies.jpg)
 
 ### Funcionalidades
 
